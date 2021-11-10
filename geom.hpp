@@ -36,16 +36,17 @@ struct Line {
     Line(const Point& p1, const Point& p2) {
         double x1 = p1.x, y1 = p1.y;
         double x2 = p2.x, y2 = p2.y;
-        A = (y2-y1)/(x2-x1);
-        B = -1;
-        C = y1-x1*((y2-y1)/(x2-x1));
+        
+        this->A = (y2-y1)/(x2-x1);
+        this->B = -1;
+        this->C = y1-x1*this->A;
     }
 
     bool parallel(const Line& other) const {
-        if(this->A/other.A == this->B/other.B){
-            return true;
+        if(other.A == 0 || other.B == 0){
+            return false;
         }
-        return false;
+        return this->A/other.A == this->B/other.B;
     }
 
     Line parallel(const Point& p) {
