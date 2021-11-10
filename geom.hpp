@@ -54,8 +54,7 @@ struct Line {
     }
 
     bool perpendicular(const Line& other) const {
-        if((this->A == other.B) && this->B == other.A*(-1))
-        return true;
+        return this->A == other.B && this->B == other.A*(-1);
     }
 
     Line perpendicular(const Point& p) {
